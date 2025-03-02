@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Tracker</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>BMI Tracker</h1>
+            <div class="help-text">
+                Track your Body Mass Index (BMI) over time. BMI is a measure of body fat based on height and weight.
+            </div>
+        </header>
+
+        <main>
+            <section class="bmi-calculator">
+                <h2>Calculate Your BMI</h2>
+                <form id="bmi-form">
+                    <div class="form-group">
+                        <label for="weight">Weight (kg):</label>
+                        <input type="number" id="weight" required 
+                               step="0.1" min="20" max="300"
+                               placeholder="e.g., 70"
+                               class="form-control">
+                        <small class="input-help">Enter your current weight in kilograms</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="height">Height (cm):</label>
+                        <input type="number" id="height" required 
+                               step="0.1" min="100" max="250"
+                               placeholder="e.g., 170"
+                               class="form-control">
+                        <small class="input-help">Enter your height in centimeters</small>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Calculate BMI</button>
+                </form>
+
+                <div id="bmi-result" class="result-card hidden">
+                    <h3>Your BMI Result</h3>
+                    <div class="bmi-value">
+                        <span id="bmi-number">0</span>
+                        <span id="bmi-category">Normal</span>
+                    </div>
+                    <div class="bmi-scale">
+                        <div class="scale-item" data-range="Underweight">
+                            <span class="range-label">Underweight</span>
+                            <span class="range-value">&lt; 18.5</span>
+                        </div>
+                        <div class="scale-item" data-range="Normal">
+                            <span class="range-label">Normal</span>
+                            <span class="range-value">18.5 - 24.9</span>
+                        </div>
+                        <div class="scale-item" data-range="Overweight">
+                            <span class="range-label">Overweight</span>
+                            <span class="range-value">25 - 29.9</span>
+                        </div>
+                        <div class="scale-item" data-range="Obese">
+                            <span class="range-label">Obese</span>
+                            <span class="range-value">&gt; 30</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="bmi-history">
+                <h2>BMI History</h2>
+                <div class="chart-container">
+                    <canvas id="bmi-chart"></canvas>
+                </div>
+                <div class="history-list">
+                    <h3>Recent Measurements</h3>
+                    <div id="measurements-list"></div>
+                </div>
+            </section>
+        </main>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="app.js"></script>
+</body>
+</html> 
